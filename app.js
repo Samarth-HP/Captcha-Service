@@ -26,8 +26,8 @@ app.listen(port, () => console.log(`listening on port: ${port}`))
 
 app.get('/', (request, response) => {
 
-    const captchaParsed = parseInt(Math.random()*9000+1000);
-    var p = new captchapng(80,30, captchaParsed); // width,height,numeric captcha
+    const captchaParsed = parseInt(Math.random()*900000+100000);
+    var p = new captchapng(120, 30, captchaParsed); // width,height,numeric captcha
     p.color(0, 0, 0, 0);  // First color: background (red, green, blue, alpha)
     p.color(80, 80, 80, 255); // Second color: paint (red, green, blue, alpha)
 
