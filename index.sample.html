@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
   <body onload="getCaptcha();">
-    <table>
-      <tr></tr>
-      <tr>
+    <div class="d-flex flex-col align-items-center w-100">
+      <div class="d-flex flex-row align-items-center">
         <img
           src="test.jpg"
           alt="captcha"
@@ -17,20 +16,33 @@
           value="Refresh"
           onclick="getCaptcha();"
         />
-        <input type="text" id="captchaInput" />
-      </tr>
-      <tr></tr>
-      <tr>
-        <td>
-          <input
-            id="Button1"
-            type="button"
-            value="Check"
-            onclick="isValidCaptcha();"
-          />
-        </td>
-      </tr>
-    </table>
+      </div>
+      <input type="text" id="txtInput" />
+      <input
+        id="Button1"
+        type="button"
+        value="Check"
+        onclick="alert(ValidCaptcha());"
+      />
+    </div>
+
+    <style type="text/css">
+      .d-flex {
+        display: flex;
+      }
+      .align-items-center {
+        align-items: center;
+      }
+      .flex-col {
+        flex-direction: column;
+      }
+      .flex-row {
+        flex-direction: row;
+      }
+      .w-100 {
+        width: 100%;
+      }
+    </style>
   </body>
   <script type="text/javascript">
     function getCaptcha() {
