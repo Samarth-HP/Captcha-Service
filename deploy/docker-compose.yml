@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  captcha:
+    build: ./captcha
+    image: captcha
+    container_name: captcha
+    restart: unless-stopped
+    ports:
+      - 9000:9000
