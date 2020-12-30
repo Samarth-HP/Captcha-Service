@@ -8,7 +8,8 @@
  */
 const {v1: uuid} = require('uuid');
 
-var captchapng = require('./captchapng');
+const captchapng = require('./captchapng');
+const cors = require('cors')
 
 const express = require('express');
 const app = express()
@@ -18,7 +19,10 @@ const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync('db.json');
 const db = low(adapter);
-
+app.use(cors({
+    origin: '*',
+    optionsSuccessStatus: 200,
+}));
 
 db.defaults({ captchas: []}).write();
 
@@ -40,7 +44,8 @@ app.get('/', (request, response) => {
 
     response.header({
         'Content-Type': 'image/png',
-        token
+        token,
+        'access-control-expose-headers': 'token'
     });
 
     // Request token
