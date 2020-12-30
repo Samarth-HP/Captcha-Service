@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <body onload="getCaptcha();">
+    <table>
+      <tr></tr>
+      <tr>
+        <img
+          src="test.jpg"
+          alt="captcha"
+          id="mainCaptcha"
+          width="120"
+          height="30"
+        />
+        <input
+          type="button"
+          id="refresh"
+          value="Refresh"
+          onclick="getCaptcha();"
+        />
+        <input type="text" id="captchaInput" />
+      </tr>
+      <tr></tr>
+      <tr>
+        <td>
+          <input
+            id="Button1"
+            type="button"
+            value="Check"
+            onclick="isValidCaptcha();"
+          />
+        </td>
+      </tr>
+    </table>
+  </body>
+  <script type="text/javascript">
+    function getCaptcha() {
+      let token = "";
+      const url = "http://127.0.0.1:9000/";
+
+      fetch(url)
+        .then((response) => {
+          token = response.headers.get("token");
+          return response.blob();
+        })
+        .then((images) => {
+          outside = URL.createObjectURL(images);
+          const captchaElement = document.getElementById("mainCaptcha");
+          captchaElement.src = outside;
+          captchaElement.setAttribute("data-token", token);
+        });
+    }
+
+    function isValidCaptcha() {
+      const captchaElement = document.getElementById("mainCaptcha");
+      const captchaInput = document.getElementById("captchaInput").value;
+
+      const token = captchaElement.getAttribute("data-token");
+
+      const url = `http://127.0.0.1:9000/verify?token=${token}&captcha=${captchaInput}`;
+      console.log({ url });
+      return fetch(url).then((response) => {
+        return response.status === 200;
+      });
+    }
+
+    function removeSpaces(string) {
+      return string.split(" ").join("");
+    }
+  </script>
+</html>
