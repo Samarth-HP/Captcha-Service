@@ -8,5 +8,5 @@ A numeric captcha generator for Node.js. Has a built in fast server that will al
 * Full JavaScript
 
 ## TODO List
-[ ] Async management of database.
-[ ] Server features to be added to docker.
+- [ ] Async management of database.
+- [ ] Server features to be added to docker.
