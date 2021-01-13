@@ -3,7 +3,7 @@
  * @Author: Chakshu Gautam
  * @Email: chaks.gautam@gmail.com
  * @Version: 2.0
- * @Date: 20120-08-18
+ * @Date: 2020-08-18
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
 const {v1: uuid} = require('uuid');
